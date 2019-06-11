@@ -24,7 +24,7 @@ export default class AuthLoadingScreen extends React.Component {
       messagingSenderId: "958080244099",
       appId: "1:958080244099:web:bdc0c5bcf669fe11"
     };
-    firebase.initializeApp(config);
+    firebase.initializeApp(firebaseConfig);
   }
 
   // Fetch the token from storage then navigate to our appropriate place

@@ -1,9 +1,9 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 export default class ErrorMessage extends React.Component {
     render() {
-        <Text style={styles.errorMessage}>{this.props.message}</Text>
+        return <Text style={styles.errorMessage}>{this.props.message}</Text>
     }
 }
 

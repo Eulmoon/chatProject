@@ -8,8 +8,9 @@ import HomeScreen from "./src/components/screens/HomeScreen";
 import LoginScreen from "./src/components/screens/LoginScreen";
 import AuthLoadingScreen from "./src/components/screens/AuthLoadingScreen";
 import RegisterScreen from "./src/components/screens/RegisterScreen";
+import ChatScreen from "./src/components/screens/ChatScreen"
 
-const AppStack = createStackNavigator({ Home: HomeScreen });
+const AppStack = createStackNavigator({ Home: HomeScreen, Chat: ChatScreen });
 const AuthStack = createStackNavigator({ LoginScreen: LoginScreen, Register: RegisterScreen });
 
 export default createAppContainer(
@@ -17,7 +18,7 @@ export default createAppContainer(
     {
       AuthLoading: AuthLoadingScreen,
       App: AppStack,
-      Auth: AuthSt0ack
+      Auth: AuthStack
     },
     {
       initialRouteName: "AuthLoading"
