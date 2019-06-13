@@ -1,0 +1,6 @@
+export const SHOW_ALL = 'show_all'
+export const SHOW_CHATTED = 'show_chatted'
+export const SHOW_NOT_CHATTED = 'show_not_chatted'
+export const SHOW_FAVORITED = 'show_favorited'
+export const SET_VISIBILITY_FILTER = 'set_visibility_filter'
+export const FETCH_USERS = 'fetch_users'
