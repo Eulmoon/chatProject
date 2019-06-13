@@ -18,17 +18,7 @@ const filterLength = Object.keys(FILTER_TITLES).length;
 
 export default class HomeScreen extends React.Component {
   componentWillMount() {
-    let dbRef = firebase.database().ref('users');
-    dbRef.on('child_added', (val) => {
-      if (val.key === user.username) {
-        return;
-      }
-      let person = val.val();
-      person.chatted = false;
-      let lol = Math.random() >= 0.5;
-      person.favorited = lol;
-      this.props.fetchUsers(person);
-    });
+    this.props.fetchUsers();
   }
 
   _logOut = async () => {
@@ -58,12 +48,14 @@ export default class HomeScreen extends React.Component {
         {/* <TouchableOpacity onPress={this._l}>
 
         </TouchableOpacity> */}
-        <VisibilityUserList navigation={this.props.navigation}/>
-          {Object.keys(FILTER_TITLES).map(filter =>
+        {
+           <VisibilityUserList navigation={this.props.navigation}/> 
+        }  
+          {/* {Object.keys(FILTER_TITLES).map(filter =>
               <FilterLink filter={filter}>
                 {FILTER_TITLES[filter]}
               </FilterLink>
-          )}
+          )} */}
       </SafeAreaView>
     );
   }

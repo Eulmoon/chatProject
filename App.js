@@ -11,17 +11,16 @@ import RegisterScreen from "./src/components/screens/RegisterScreen";
 import ChatScreen from "./src/components/screens/ChatScreen"
 import reducer from "./src/reducers";
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from "redux-thunk";
 
 const AppStack = createStackNavigator({ Home: HomeScreen, Chat: ChatScreen });
 const AuthStack = createStackNavigator({ LoginScreen: LoginScreen, Register: RegisterScreen });
 
-/* eslint-disable no-underscore-dangle */
 const store = createStore(
-  reducer, /* preloadedState, */
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  reducer,
+  applyMiddleware(thunk)
 )
-/* eslint-enable */
 
 const Stack = createAppContainer(
   createSwitchNavigator(
@@ -38,7 +37,6 @@ const Stack = createAppContainer(
 
 export default class App extends React.Component {
   render() {
-    console.log(store.getState())
     return (
       <Provider store={store}>
         <Stack />
