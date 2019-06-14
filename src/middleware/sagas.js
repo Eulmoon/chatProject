@@ -3,12 +3,12 @@ import { apiFetch } from '../api'
 import * as types from "../constants/ChatFilter"
 import { fetchUsersSuccess, fetchUsersFailed } from '../actions';
 
-function* fetchUser(action) {
+function* fetchUser() {
     try {
         const user = yield call(apiFetch);
-        yield put(fetchUsersSuccess);
+        yield put({type: types.FETCH_USERS_SUCCESS, user});
     } catch (ex) {
-        yield put(fetchUsersFailed)
+        yield put({type: types.FETCH_USERS_FAILED})
     }
 }
 

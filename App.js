@@ -11,17 +11,21 @@ import RegisterScreen from "./src/components/screens/RegisterScreen";
 import ChatScreen from "./src/components/screens/ChatScreen"
 import reducer from "./src/reducers";
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import mySaga from './src/middleware/sagas'
+import createSagaMiddleware from "redux-saga";
 
 const AppStack = createStackNavigator({ Home: HomeScreen, Chat: ChatScreen });
 const AuthStack = createStackNavigator({ LoginScreen: LoginScreen, Register: RegisterScreen });
-
+const sagaMiddleware = createSagaMiddleware()
 /* eslint-disable no-underscore-dangle */
 const store = createStore(
   reducer, /* preloadedState, */
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  applyMiddleware(sagaMiddleware)
 )
 /* eslint-enable */
+
+sagaMiddleware.run(mySaga)
 
 const Stack = createAppContainer(
   createSwitchNavigator(

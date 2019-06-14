@@ -9,7 +9,8 @@ export const getVisibilityUsers = createSelector(
     (visibilityFilter, users) => {
         switch (visibilityFilter) {
             case types.SHOW_ALL:
-                console.log('wtf')
+                console.log('wtf');
+                console.log(users)
                 return users
             case types.SHOW_CHATTED:
                 return users.filter(u => u.chatted)

@@ -1,5 +1,4 @@
 import { FETCH_USERS, FETCH_USERS_SUCCESS, FETCH_USERS_FAILED } from '../constants/ChatFilter'
-import { DrawerActions } from 'react-navigation';
 
 const initialState = {
     users: [],
@@ -18,12 +17,13 @@ export default function fetchUsers(state = initialState, action) {
         case FETCH_USERS_SUCCESS:
             return {
                 ...state,
-                users: DrawerActions.user,
+                users: action.user,
                 isFetching: false
             }
         case FETCH_USERS_FAILED:
             return {
                 ...state,
+                users:[],
                 isFetching: false,
                 error: true
             }

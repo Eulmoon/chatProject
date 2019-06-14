@@ -18,7 +18,7 @@ const filterLength = Object.keys(FILTER_TITLES).length;
 
 export default class HomeScreen extends React.Component {
   componentWillMount() {
-    this.props.fetchUsers(person);
+    this.props.fetchUsers();
   }
 
   _logOut = async () => {
@@ -55,11 +55,11 @@ export default class HomeScreen extends React.Component {
           !this.props.error && <VisibilityUserList navigation={this.props.navigation}/>
         }
         
-          {Object.keys(FILTER_TITLES).map(filter =>
+          {/* {Object.keys(FILTER_TITLES).map(filter =>
               <FilterLink filter={filter}>
                 {FILTER_TITLES[filter]}
               </FilterLink>
-          )}
+          )} */}
       </SafeAreaView>
     );
   }

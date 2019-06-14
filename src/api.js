@@ -2,17 +2,17 @@ import firebase from 'firebase'
 import user from '../User'
 
 export async function apiFetch() {
-    let users = []
+    var users = [];    
     let dbRef = await firebase.database().ref('users');
-    await dbRef.on('child_added', async (val) => {
+    await dbRef.once('child_added', (val) => {
       if (val.key === user.username) {
         return;
       }
-      let person = val.val();
+      var person = val.val();
       person.chatted = false;
-      let lol = Math.random() >= 0.5;
-      person.favorited = lol;
-      users.push(person); 
+      person.favorited = true;
+      console.log(person)
+      users.push(person);
     });
     return users;
 }
